@@ -1,0 +1,9 @@
+{% load staticfiles %}
+<div class="awarded_badge">
+	<img src="{% static badge.badge.graphics_file.url %}" 
+		alt="{{ badge.badge.name }}" 
+		title="{{ badge.badge.description}}"/>
+	<p class="awarded_badge_name">{{ badge.badge.name }}</p>
+	<p style="font-size: 90%; margin: 3px;">Achieved<br />{{ badge.awarded }}</p>
+</div>
+

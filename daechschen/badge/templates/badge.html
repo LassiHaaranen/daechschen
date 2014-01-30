@@ -1,0 +1,9 @@
+{% load staticfiles %}
+<div class="badge">
+		<img src="{% static badge.graphics_file.url %}"
+			alt="{{ badge.name }}" 
+			title="{{ badge.description}}"/> 
+
+	<p class="badge_name">{{ badge.name }}</p>
+	<p style="margin: 2px;">{{ badge.description }}</p>
+</div>

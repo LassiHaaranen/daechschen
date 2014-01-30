@@ -1,0 +1,60 @@
+[
+{
+	"pk": 1, 
+	"model": "badge.badge", 
+	"fields": {
+		"graphics_file": "badge/careful.png",
+		"course_instance": 1, 
+		"name": "First steps", 
+		"_my_subclass": "minimumgradeonroundbadge", 
+		"description": " Get at least half of the points from the first exercise round. "
+		}
+},{
+	"pk": 1, 
+	"model": "badge.minimumgradeonroundbadge", 
+	"fields": {
+		"round_id": 1, 
+		"score_percentage": 50
+		}
+},{
+	"pk": 2, 
+	"model": "badge.badge", 
+	"fields": {
+		"graphics_file": "badge/extra_careful.png",
+		"course_instance": 1, 
+		"name": "You did it!", 
+		"_my_subclass": "minimumgradeonroundbadge", 
+		"description": " First exercise round completed with full points. "
+		}
+},{
+	"pk": 2, 
+	"model": "badge.minimumgradeonroundbadge", 
+	"fields": {
+		"round_id": 1, 
+		"score_percentage": 100
+		}
+},{
+	"pk": 3, 
+	"model": "badge.badge", 
+	"fields": {
+		"name": "Master", 
+		"_my_subclass": "metabadge", 
+		"course_instance": 1,
+		"graphics_file": "badge/overachiever.png", 
+		"hidden": true, 
+		"description": " You got ALL of the badges! "
+		}
+},{
+	"pk": 3, 
+	"model": "badge.metabadge", 
+	"fields": {
+		"required_badges": [1,2]
+	}
+}
+
+]
+
+
+
+
+

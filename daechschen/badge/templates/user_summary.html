@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block head %}
+	<base target="_parent" />
+{% endblock %}
+
+{% block content %}
+	<p class="info_text" style="border: 1px solid #aeaeae; padding: 3px;">
+		The following is the list of achievement badges you can collect in this course. 
+		These badges are a way of providing additional feedback on your performance. 
+		They will not affect your score or grading on the course.
+	</p>
+	{% if user_badges %}
+		<h3 class="badge_title">Your badges</h3>
+		<p class="info_text">You have achieved {{user_badges|length}}/{{all_badges|length}} badges.</p>
+
+		{% for badge in user_badges %}		
+			{% include "awarded_badge.html" with badge=badge %}    
+		{% endfor %}	
+	{% else %}
+		<p class="info_text">You haven't achieved any badges yet.</p>
+	{% endif %}
+
+	<div style="clear:both;">&nbsp;</div>
+	{% if badges %}
+		<h3 class="badge_title">Available badges on the course</h3>
+		{% for badge in badges %}		
+			{% include "badge.html" with badge=badge %}    
+		{% endfor %}
+		<div style="clear:both;">&nbsp;</div>
+	{% else %}
+		<p class="info_text">No badges are available for this course.</p>
+	{% endif %}
+
+<div style="clear:both;">&nbsp;</div>
+
+
+{% endblock  %}

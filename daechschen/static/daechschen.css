@@ -1,0 +1,30 @@
+div.badge { width: 180px; 
+			height: 215px;
+			border: 1px solid #aeaeae; 
+			background-color: #FFFFFF;
+			text-align: center;
+			margin: 3px;
+			padding: 3px;
+			float: left;
+			font-size: 13px;
+			line-height: 90%;
+			color: #333;
+			font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+		}
+div.awarded_badge {
+				width: 170px; 
+				height: 180px;
+				border: 1px solid #aeaeae; 
+				background-color: #FFFFFF;
+				text-align: center;
+				margin: 3px;
+				padding: 5px;
+				float: left;
+				font-size: 13px;
+				color: #333;
+				font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}		
+p.badge_name {font-size: 110%; color: #333; font-weight: 700; margin: 0px 5px 0px 5px;}
+p.awarded_badge_name {font-size: 105%; font-weight:700; margin: 1px;}
+h3.badge_title { line-height: 27px; font-size: 18px; font-weight: bold; color: #333333;text-rendering: optimizelegibility; font-size: 1.17em; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;}
+a.info_text, p.info_text {line-height: 18px; font-size: 14px;  color: #333333;text-rendering: optimizelegibility;  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;}

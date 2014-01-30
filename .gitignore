@@ -1,0 +1,5 @@
+*.pyc
+*.sublime*
+daechschen/badge_db.sql
+daechschenenv
+daechschen/local_settings.py
