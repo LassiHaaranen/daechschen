@@ -2,6 +2,7 @@
 
 {% block head %}
 	<base target="_parent" />
+	<script type="text/javascript" src="/static/jquery-1.11.0.min.js"></script>
 {% endblock %}
 
 {% block content %}
@@ -10,6 +11,13 @@
 		These badges are a way of providing additional feedback on your performance. 
 		They will not affect your score or grading on the course.
 	</p>
+
+	{% if show_badges %}
+		<button id="toggle_badge" style="padding: 5px;">Showing badges. Click to turn them OFF.</button>
+	{% else %}
+		<button id="toggle_badge" style="padding: 5px;">Not showing badges. Click to turn them ON.</button>
+	{% endif %}
+	
 	{% if user_badges %}
 		<h3 class="badge_title">Your badges</h3>
 		<p class="info_text">You have achieved {{user_badges|length}}/{{all_badges|length}} badges.</p>
@@ -29,10 +37,23 @@
 		{% endfor %}
 		<div style="clear:both;">&nbsp;</div>
 	{% else %}
-		<p class="info_text">No badges are available for this course.</p>
+		<p class="info_text"></p>
 	{% endif %}
 
 <div style="clear:both;">&nbsp;</div>
 
+
+<script>
+	$("#toggle_badge").click( function() {
+		$.post( "/user/toggle_badges/", { user_id: "{{user_id}}", user_hash: "{{user_hash}}" }, function( data ) {
+			if(data === "True") {
+				$("#toggle_badge").text("Showing badges. Click to turn them OFF.")
+			} else {
+				$("#toggle_badge").text("Not showing badges. Click to turn them ON.")
+			}
+
+		}).fail(function(data) { });
+	});
+</script>
 
 {% endblock  %}

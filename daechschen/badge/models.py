@@ -1,13 +1,27 @@
-
 from django.db import models
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.sites.models import Site
 from django.contrib.auth.models import AbstractUser
 from django.conf import settings 
 
-class BadgeUser(AbstractUser):
-  # TODO: show/hide badges in the side bar view based on this
+import random
+
+class BadgeUser(AbstractUser):  
   show_badges = models.BooleanField(default=True)
+  experimental_group = models.IntegerField("Identifier of the experimental group", default=0)
+  user_hash = models.CharField("Hash for the user", max_length=255, default=random.getrandbits(255))
+
+  def __unicode__(self):
+    return str(self.id)
+
+class ToggleHistory(models.Model):
+  user = models.ForeignKey(BadgeUser)
+  new_value = models.BooleanField()
+  datetime = models.DateTimeField(auto_now=True)
+
+  def __unicode__(self):
+    return self.user.username + " " + str(self.new_value) + " " + str(self.datetime)
+  
 
 class KnowsChild(models.Model):
   """

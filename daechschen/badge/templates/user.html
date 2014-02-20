@@ -2,7 +2,7 @@
 
 {% block head %}
 <base target="_parent" />
-<script type="text/javascript" src="/static/js/jquery.min.js"></script>
+<script type="text/javascript" src="/static/jquery-1.11.0.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
 		$("div#awarded_badges").hide(0).slideDown(600)
@@ -14,27 +14,30 @@
 
 {% block content %}
 
-{% if awarded_badges %}
-	<div id="awarded_badges">
+{% if show_badges %}
+	{% if awarded_badges %}
+		<div id="awarded_badges">
 
-	<h3 class="badge_title">New badges</h3>
-	{% for badge in awarded_badges %}
-		{% include "awarded_badge.html" with badge=badge %}
-	{% endfor %}
-	<div style="clear:both;">&nbsp;</div>	
-	</div>
-{% else %}
-	{% if user_badges %}
-		<h3 class="badge_title">Latest badge</h3>
-		{% with user_badges|first as latest_badge %}		
-			{% include "awarded_badge.html" with badge=latest_badge %}    
-		{% endwith %}
-		<div style="clear:both;">&nbsp;</div>		
+		<h3 class="badge_title">New badges</h3>
+		{% for badge in awarded_badges %}
+			{% include "awarded_badge.html" with badge=badge %}
+		{% endfor %}
+		<div style="clear:both;">&nbsp;</div>	
+		</div>
 	{% else %}
-		<p class="info_text">You haven't achieved any badges yet.</p>
+		{% if user_badges %}
+			<h3 class="badge_title">Latest badge</h3>
+			{% with user_badges|first as latest_badge %}		
+				{% include "awarded_badge.html" with badge=latest_badge %}    
+			{% endwith %}
+			<div style="clear:both;">&nbsp;</div>		
+		{% else %}
+			<p class="info_text"><!-- no badges yet --></p>
+		{% endif %}
 	{% endif %}
+{% else %}
+  <!-- no badges -->
 {% endif %}
-
 
 <div style="clear:both;">&nbsp;</div>
 
